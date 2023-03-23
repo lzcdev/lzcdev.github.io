@@ -1,0 +1,21 @@
+{
+  "name": "lzcdev",
+  "author": "lzcdev<lzc2134@gmail.com>",
+  "homepage": "https://lzcdev.github.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lzcdev/lzcdev.github.io"
+  },
+  "bugs": {
+    "url": "https://github.com/lzcdev/lzcdev.github.io/issues"
+  },
+  "scripts": {
+    "dev": "bundle exec jekyll serve --watch",
+    "start": "npm run dev",
+    "build": "bundle exec jekyll build",
+    "min": "uglifyjs ./js/index.js -o ./js/index.min.js  --comments all"
+  },
+  "devDependencies": {
+    "uglify-js": "^2.7.5"
+  }
+}
