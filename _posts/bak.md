@@ -6,4 +6,8 @@ summary: 佚名
 categories: Share
 ---
 
+{% highlight JavaScript %}
+
 测试测试测试测试测试测试
+
+{% endhighlight %}

@@ -1,0 +1,288 @@
+<!doctype html>
+<html class="no-js" lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8">
+  <title>栈和队列 - lzcdev</title>
+  <meta name="description"
+        content="Hi，我是 lzcdevShare佚名">
+  
+  <meta name="keywords" content="">
+  
+
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#FFFFFF">
+
+  <!-- Open Graph -->
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="栈和队列 - lzcdev">
+  <meta property="og:description"
+        content="佚名">
+  <meta property="og:url" content="http://localhost:4000/2021-01-12/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97.html">
+  <meta property="og:site_name" content="lzcdev">
+  <link rel="stylesheet" href="https://gw.alipayobjects.com/os/k/font/lxgwwenkaiscreenr.css" async rel="preload" as="font">
+
+
+
+<meta name="twitter:site" content="http://localhost:4000" />
+<meta name="twitter:url" content="http://localhost:4000/2021-01-12/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97.html" />
+<meta name="twitter:title" content="栈和队列 - lzcdev" />
+<meta name="twitter:description" content="佚名" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="" />
+
+
+
+  
+
+  
+
+  
+  <meta
+  property="og:image"
+  content=""
+ />
+  
+
+
+  
+  <link rel="canonical" href="http://localhost:4000/2021-01-12/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97.html">
+  <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="lzcdev Feed">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+
+  <link rel="stylesheet" href="http://localhost:4000/css/index.css">
+
+  <meta http-equiv="cleartype" content="on">
+
+  
+  <script src="//gw.alipayobjects.com/os/k/tw93/lazysizes.min.js" async></script>
+  
+</head>
+
+<body id="post">
+<!--[if lt IE 10]>
+<div class="upgrade"><strong><a href="http://whatbrowser.org/" target="_blank">Your browser is quite old!</strong> Why
+  not upgrade to a different browser to better enjoy this site?</a></div>
+<![endif]-->
+
+
+
+<div class="header-menu" id="J_header">
+  <ul class="header-item-container">
+    <li class="header-item-title active">
+      <a href="http://localhost:4000/" class="title"> lzcdev</a>
+    </li>
+    
+
+    
+    
+
+    
+    <li class="header-item "><a href="https://github.com/lzcdev" target="_blank">Github</a></li>
+    
+    
+
+    
+    
+
+    
+    <li class="header-item "><a href="http://localhost:4000/about">About</a></li>
+    
+    
+
+    
+    
+
+    
+    <li class="header-item "><a href="http://localhost:4000/categories.html">Categories</a></li>
+    
+    
+  </ul>
+</div>
+
+<div class="entry-header" style="width: 100%;">
+  <svg width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
+       xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+    <path id="svg-title-path">
+      <animate attributeName="d" from="m0,110 h0" to="m0,110 h1100" dur="2s" repeatCount="1" fill="freeze" begin="0s" />
+    </path>
+    <text font-size="34" font-weight="bold" fill='#ffffff' x="50%" y="50%" text-anchor="middle" word-spacing="2.0" letter-spacing="0.9">
+      <textPath xlink:href="#svg-title-path">栈和队列</textPath>
+    </text>
+  </svg>
+  <canvas id="J_firework_canvas"></canvas>
+</div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="entry-content">
+      <h1 class="post-title entry-title">栈和队列</h1>
+      <h4 class="page-info">
+        <span>Categories:&nbsp;&nbsp;Share</span>
+        <time datetime="2021-01-12T20:00:00+01:00">2021-01-12</time>
+        <div class="qr-text" id="J_qr_text">
+          <div id="J_qr_code" class="qr-code" onmouseover="this.title='';"></div>
+        </div>
+      </h4>
+      <p>队列 queue 是先进先出 栈是 stack 后进先出</p>
+
+<h2 id="javascript-中的堆栈">JavaScript 中的堆栈</h2>
+
+<p>JS 可以用数组来模拟堆栈，主要是因为数组提供了比较全的方法，既可以操作顶部，也可以操作底部。
+队列是先进先出的，出队列的话可以用数组的 shift 方法来出队列
+栈是先进后出的，可以用数组的 pop 方法来出栈</p>
+
+<h2 id="栈stack">栈（stack）</h2>
+
+<p>后进先出，新添加的元素或待删除的元素保存在栈顶（即后进入的元素），另一端为栈底（即先进入的元素）。在栈中，新元素总是靠近栈顶，旧元素总是靠近栈底。</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">class</span> <span class="nx">Stack</span> <span class="p">{</span>
+
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 向栈顶新加元素</span>
+  <span class="nx">push</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 从栈顶弹出元素，返回的是栈顶的元素</span>
+  <span class="nx">pop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">pop</span><span class="p">()</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 返回栈顶的元素，并不弹出元素</span>
+  <span class="nx">peek</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 判断栈是否为空</span>
+  <span class="nx">isEmpty</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 返回栈的长度</span>
+  <span class="nx">size</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 清空栈</span>
+  <span class="nx">clear</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 打印栈内所有的元素</span>
+  <span class="nx">print</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="c1">// 验证</span>
+<span class="kd">const</span> <span class="nx">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stack</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">stack</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">());</span> <span class="c1">// true</span>
+
+<span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">stack</span><span class="p">.</span><span class="nx">peek</span><span class="p">());</span> <span class="c1">// 8</span>
+
+<span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">stack</span><span class="p">.</span><span class="nx">size</span><span class="p">());</span> <span class="c1">// 3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">stack</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">());</span> <span class="c1">// false</span>
+
+<span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
+<span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+<span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">stack</span><span class="p">.</span><span class="nx">size</span><span class="p">());</span> <span class="c1">// 2</span>
+<span class="nx">stack</span><span class="p">.</span><span class="nx">print</span><span class="p">();</span> <span class="c1">// 5,8</span>
+
+<span class="nx">stack</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+<span class="nx">stack</span><span class="p">.</span><span class="nx">print</span><span class="p">();</span> </code></pre></figure>
+
+<h2 id="堆栈相关题目">堆栈相关题目</h2>
+
+<ul>
+  <li><a href="https://leetcode.cn/problems/valid-parentheses/">20. 有效的括号</a></li>
+  <li><a href="https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/">1047. 删除字符串中的所有相邻重复项</a></li>
+  <li><a href="https://leetcode.cn/problems/evaluate-reverse-polish-notation/description/">150. 逆波兰表达式求值 </a></li>
+</ul>
+
+      
+<div class="coffee">
+  <a
+    class="buy-me-coffee"
+    href="https://github.com/lzcdev/lzcdev.github.io"
+    target="_blank"
+    >喜欢文章 → 去点赞❤️</a
+  >
+</div>
+
+
+    </div>
+    
+<div class="giscus-container">
+<script
+  src="https://giscus.app/client.js"
+  data-repo="lzcdev/lzcdev.github.io"
+  data-repo-id="R_kgDOJNUijA"
+  data-category="General"
+  data-category-id="DIC_kwDOJNUijM4CVaLE"
+  data-mapping="title"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-lang="zh-CN"
+  data-theme="https://gw.alipayobjects.com/os/k/font8/comment.css"
+  crossorigin="anonymous"
+  async
+></script>
+</div>
+
+
+    
+
+  </article>
+</div>
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    &copy; 2015~2023&nbsp;
+    <span>Powered by <a href="https://jekyllrb.com/" rel="nofollow" target="_blank" class="need_dotted">Jekyll</a>
+    </span> and
+    <span>Theme by
+      <img src="https://cdn.fliggy.com/upic/a1THPC.png" class="github-icon" alt="github" />
+      <a href="https://github.com/tw93/tw93.github.io" rel="nofollow" target="_blank" class="need_dotted">tw93</a>
+    </span>
+  </footer>
+</div>
+
+<script type="text/javascript" src="http://localhost:4000/js/index.min.js"></script>
+<script type="text/javascript" src="https://gw.alipayobjects.com/os/k/h3/heti-addon.min.js"></script>
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.links;
+    for (var i = 0; i < links.length; i++) {
+      if (
+        links[i].hostname != window.location.hostname ||
+        (links[i].href && links[i].href.indexOf('feed.xml') != -1)
+      ) {
+        links[i].target = '_blank';
+      }
+    }
+    //字距优化
+    const heti = new Heti('.heti');
+    heti.autoSpacing();
+  });
+</script>
+</body>
+</html>
